@@ -43,7 +43,7 @@ var log = mlog.log;
             (0, _chai.expect)(nextState.equals(expectedResult)).to.equal(true);
         });
 
-        _mocha.it.only('adds to existing tally for the voted entry', function () {
+        (0, _mocha.it)('adds to existing tally for the voted entry', function () {
             var state = (0, _immutable.Map)({
                 vote: (0, _immutable.Map)({
                     pair: _immutable.List.of('movie1', 'movie2'),

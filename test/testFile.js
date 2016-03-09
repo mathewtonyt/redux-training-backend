@@ -36,7 +36,7 @@ describe('immutablilty => ', (done) => {
             expect(nextState.equals(expectedResult)).to.equal(true)
         });
 
-        it.only('adds to existing tally for the voted entry', () => {
+        it('adds to existing tally for the voted entry', () => {
             const state = Map({
                 vote: Map({
                     pair: List.of('movie1', 'movie2'),
