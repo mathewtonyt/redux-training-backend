@@ -10,11 +10,11 @@
     "sourceMaps": true
   },
   "scripts": {
-    "compile": "babel src --out-dir dist/src --source-maps",
-    "compile-test": "babel test --out-dir dist/test --source-maps",
+    "compile": "babel src --out-dir dist/src  --recursive --source-maps",
+    "compile-test": "babel test --out-dir dist/test  --source-maps",
     "compile-all" : "npm run compile && npm run compile-test", 
     "prepublish": "npm run compile",
-    "test": "npm run compile-all && mocha --compilers js:babel-core/register"
+    "test": "npm run compile-all && mocha test --recursive --compilers js:babel-core/register"
   },
   "keywords": [],
   "author": "",

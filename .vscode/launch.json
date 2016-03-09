@@ -7,7 +7,7 @@
             "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
             "request": "launch",
             "stopOnEntry": false,
-            "args": ["${workspaceRoot}/dist/test/*.js", "--recursive", "--compilers", "js:babel-register"],
+            "args": ["${workspaceRoot}/dist/test/**/*.js", "--recursive", "--compilers", "js:babel-register"],
             "cwd": "${workspaceRoot}",
             "runtimeExecutable": null,
             "runtimeArgs": [

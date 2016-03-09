@@ -62,7 +62,7 @@ var log = mlog.log;
 
     (0, _mocha.describe)('next', function () {
 
-        _mocha.it.only('marks winner when just one entry left', function () {
+        (0, _mocha.it)('marks winner when just one entry left', function () {
             var state = (0, _immutable.Map)({
                 vote: (0, _immutable.Map)({
                     pair: _immutable.List.of('Trainspotting', '28 Days Later'),

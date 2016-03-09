@@ -56,7 +56,7 @@ describe('immutablilty => ', (done) => {
 
     describe('next', () => {
 
-        it.only('marks winner when just one entry left', () => {
+        it('marks winner when just one entry left', () => {
             const state = Map({
                 vote: Map({
                     pair: List.of('Trainspotting', '28 Days Later'),
