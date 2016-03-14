@@ -22,20 +22,16 @@ var log = mlog.log;
                 }),
                 entries: (0, _immutable.List)()
             });
-            var nextState = (0, _core.vote)(state, 'movie1');
+            var nextState = (0, _core.vote)(state.get('vote'), 'movie1');
 
-            var expectedResult = (0, _immutable.Map)({
-                vote: (0, _immutable.Map)({
-                    pair: _immutable.List.of('movie1', 'movie2'),
-                    tally: (0, _immutable.Map)({
-                        'movie1': 1
-                    })
-                }),
-                entries: (0, _immutable.List)()
-
+            var expectedResult = (0, _immutable.fromJS)({
+                pair: _immutable.List.of('movie1', 'movie2'),
+                tally: (0, _immutable.Map)({
+                    'movie1': 1
+                })
             });
 
-            log('actual result =>', state.toString());
+            log('initial state =>', state.toString());
             log('expected result =>', expectedResult.toString());
             log('returned result =>', nextState.toString());
             log('equal : ', nextState.equals(expectedResult));
@@ -54,16 +50,13 @@ var log = mlog.log;
                 }),
                 entries: (0, _immutable.List)()
             });
-            var nextState = (0, _core.vote)(state, 'movie1');
+            var nextState = (0, _core.vote)(state.get('vote'), 'movie1');
             var expectedResult = (0, _immutable.Map)({
-                vote: (0, _immutable.Map)({
-                    pair: _immutable.List.of('movie1', 'movie2'),
-                    tally: (0, _immutable.Map)({
-                        'movie1': 4,
-                        'movie2': 2
-                    })
-                }),
-                entries: (0, _immutable.List)()
+                pair: _immutable.List.of('movie1', 'movie2'),
+                tally: (0, _immutable.Map)({
+                    'movie1': 4,
+                    'movie2': 2
+                })
             });
 
             log('actual result   =>', state.toString());

@@ -1,17 +1,20 @@
-import {List, Map} from 'immutable';
+import {List, Map, fromJS} from 'immutable';
 let mlog = require('mocha-logger')
 let log = mlog.log;
 
+export const INITIAL_STATE = Map();
+
 export function vote(state, movie) {
     return state.updateIn(
-        ['vote', 'tally', movie],
+        ['tally', movie],
         0,
         tally => tally + 1
     );
 }
 
 export function setEntries(state, entries) {
-    return state.set('entries', entries);
+    log('reached instide the corejs', state.toString())
+    return state.set('entries', fromJS(entries));
 }
 
 

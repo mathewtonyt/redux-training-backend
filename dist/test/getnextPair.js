@@ -51,12 +51,13 @@ var log = mlog.log;
                 entries: _immutable.List.of('Sunshine', 'Millions', '127 Hours')
             });
             var nextState = (0, _core.next)(state);
-            (0, _chai.expect)(nextState).to.equal((0, _immutable.Map)({
+            var expectedResults = (0, _immutable.Map)({
                 vote: (0, _immutable.Map)({
                     pair: _immutable.List.of('Sunshine', 'Millions')
                 }),
                 entries: _immutable.List.of('127 Hours', 'Trainspotting', '28 Days Later')
-            }));
+            });
+            (0, _chai.expect)(nextState.equals(expectedResults)).to.equal(true);
         });
     });
 

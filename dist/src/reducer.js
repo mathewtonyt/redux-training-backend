@@ -7,35 +7,22 @@ exports.default = reducer;
 
 var _core = require('./core');
 
-var _winston = require('winston');
+var logger = require('winston');
+function reducer() {
+    var state = arguments.length <= 0 || arguments[0] === undefined ? _core.INITIAL_STATE : arguments[0];
+    var action = arguments[1];
 
-var winston = _interopRequireWildcard(_winston);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-var logger = new winston.Logger();
-function reducer(state, action) {
-    logger.info('reacher inside the reducer');
-    var nextState = undefined;
-    switch (action._type) {
+    switch (action.type) {
         case 'SET_ENTRIES':
-            logger.info('action type > SET_ENTRIES');
-            nextState = (0, _core.setEntries)(state, entries);
-            logger.info('next state > ', nextState.toString());
-            break;
-
+            return (0, _core.setEntries)(state, action.entries);
         case 'NEXT':
-            logger.log('action type > NEXT');
-            break;
-
+            return (0, _core.next)(state);
         case 'VOTE':
-            logger.log('action type > VOTE');
-            break;
-
-        default:
-            logger.log('no action found going into the default action');
-            break;
+            console.log('state => ', state.toString());
+            return state.update('vote', function (voteState) {
+                return (0, _core.vote)(voteState, action.entry);
+            });
     }
-    return nextState;
+    return state;
 }
 //# sourceMappingURL=reducer.js.map

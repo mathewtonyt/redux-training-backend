@@ -44,14 +44,14 @@ describe('immutablilty => ', (done) => {
                 entries: List.of('Sunshine', 'Millions', '127 Hours')
             });
             const nextState = next(state);
-            expect(nextState).to.equal(Map({
+            const expectedResults = Map({
                 vote: Map({
                     pair: List.of('Sunshine', 'Millions')
                 }),
                 entries: List.of('127 Hours', 'Trainspotting', '28 Days Later')
-            }));
-        });
-
+            });
+            expect(nextState.equals(expectedResults)).to.equal(true);
+        })
     });
 
     describe('next', () => {

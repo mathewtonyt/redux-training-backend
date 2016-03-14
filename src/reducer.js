@@ -1,27 +1,16 @@
-import {next, vote, setEntries} from './core'
-import * as winston from 'winston'
-let logger = new winston.Logger();
-export default function reducer(state, action) {
-    logger.info('reacher inside the reducer')
-    let nextState
-    switch (action._type) {
+let logger = require('winston');
+import {setEntries, next, vote, INITIAL_STATE} from './core';
+
+export default function reducer(state = INITIAL_STATE, action) {
+    switch (action.type) {
         case 'SET_ENTRIES':
-            logger.info('action type > SET_ENTRIES')
-            nextState = setEntries(state, entries)
-            logger.info('next state > ', nextState.toString())
-            break;
-
+            return setEntries(state, action.entries);
         case 'NEXT':
-            logger.log('action type > NEXT')
-            break;
-
+            return next(state);
         case 'VOTE':
-            logger.log('action type > VOTE')
-            break;
-
-        default:
-            logger.log('no action found going into the default action')
-            break;
+            console.log('state => ', state.toString())
+            return state.update('vote',
+                voteState => vote(voteState, action.entry))
     }
-    return nextState
+    return state;
 }

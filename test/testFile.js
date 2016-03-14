@@ -1,5 +1,5 @@
 import {expect} from 'chai'
-import {List, Map} from 'immutable'
+import {List, Map, fromJS} from 'immutable'
 import {describe, it} from 'mocha'
 let mlog = require('mocha-logger')
 let log = mlog.log;
@@ -15,20 +15,16 @@ describe('immutablilty => ', (done) => {
                 }),
                 entries: List()
             });
-            const nextState = vote(state, 'movie1');
+            const nextState = vote(state.get('vote'), 'movie1');
 
-            let expectedResult = Map({
-                vote: Map({
-                    pair: List.of('movie1', 'movie2'),
-                    tally: Map({
-                        'movie1': 1
-                    })
-                }),
-                entries: List()
-
+            let expectedResult = fromJS({
+                pair: List.of('movie1', 'movie2'),
+                tally: Map({
+                    'movie1': 1
+                })
             });
 
-            log('actual result =>', state.toString())
+            log('initial state =>', state.toString())
             log('expected result =>', expectedResult.toString())
             log('returned result =>', nextState.toString())
             log('equal : ', nextState.equals(expectedResult))
@@ -47,23 +43,20 @@ describe('immutablilty => ', (done) => {
                 }),
                 entries: List()
             });
-            const nextState = vote(state, 'movie1');
+            const nextState = vote(state.get('vote'), 'movie1');
             let expectedResult = Map({
-                vote: Map({
-                    pair: List.of('movie1', 'movie2'),
-                    tally: Map({
-                        'movie1': 4,
-                        'movie2': 2
-                    })
-                }),
-                entries: List()
+                pair: List.of('movie1', 'movie2'),
+                tally: Map({
+                    'movie1': 4,
+                    'movie2': 2
+                })
             })
 
             log('actual result   =>', state.toString())
             log('expected result =>', expectedResult.toString())
             log('returned result =>', nextState.toString())
             log('equal : ', nextState.equals(expectedResult))
-            
+
             expect(nextState.equals(expectedResult)).to.equal(true);
         });
 

@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/index.js"],"names":[],"mappings":";;;;;;;;;;;;;;;;;AAGO,IAAM,wBAAQ,sBAAR;AACb","file":"index.js","sourcesContent":["import makeStore from './src/store';\nimport startServer from './src/server';\n\nexport const store = makeStore();\nstartServer();\n"]}
